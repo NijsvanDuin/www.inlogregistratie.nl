@@ -1,0 +1,7 @@
+#footer {
+    min-height: 4em;
+    background-color: rgb(70, 70, 70);
+    color: white;
+    text-align: center;
+    font-weight: bolder;
+}

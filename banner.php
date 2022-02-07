@@ -1,1 +1,1 @@
-<img src="./img/bannerimg.png" alt="bannerimg" class="img-fluid">
+<img src="./img/bannerimg.png" alt="bannerimg" class="img-fluid w-100">
