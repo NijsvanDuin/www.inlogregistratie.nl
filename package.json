@@ -1,0 +1,11 @@
+{
+  "name": "nl.inlogregistratie.www",
+  "version": "1.0.0",
+  "description": "Be opdracht",
+  "main": "app.js",
+  "scripts": {
+    "test": "testing3241"
+  },
+  "author": "Nijs van Duin",
+  "license": "ISC"
+}
