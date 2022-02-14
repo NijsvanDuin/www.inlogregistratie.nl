@@ -12,7 +12,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Groenten Sap</a>
+    <a class="navbar-brand" href="./index.php?content=home">Groenten Sap</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -28,13 +28,13 @@
           <a class="nav-link <?php if ($active == "smoothies") { echo "active"; } ?>" href="./index.php?content=smoothies">Smoothies</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle <?php if ($active == "sleep" || $active == "nutrition" || $active == "exercise") { echo "active"; } ?>" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Heath education
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><a class="dropdown-item <?php if ($active == "sleep") { echo "active"; } ?>" href="./index.php?content=sleep">sleep</a></li>
+            <li><a class="dropdown-item <?php if ($active == "nutrition") { echo "active"; } ?>" href="./index.php?content=nutrition">nutrition</a></li>
+            <li><a class="dropdown-item <?php if ($active == "exercise") { echo "active"; } ?>" href="./index.php?content=exercise">exercise</a></li>
           </ul>
         </li>
       </ul>
