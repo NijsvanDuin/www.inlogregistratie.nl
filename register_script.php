@@ -20,6 +20,15 @@ if (empty($_POST["email"])) {
 
         $sql = "INSERT INTO `register` (`id`, `email`, `password`, `userrole`) VALUES (NULL,'$email','$password_hash','customer')";
         if (mysqli_query($conn,$sql)) {
+            $to = $email;
+            $subject = "Activatie link voor u account bij Groenten Sappen";
+            $massege = "Dit is een hele mooie test";
+            $headers = "From: admin@groentensappen.org\r\n";
+            $headers .= "Cc: moderator@groentensappen.org\r\n";
+            $headers .= "Bcc: root@groentensappen.org";
+
+            mail($to,$subject,$massege,$headers);
+
             header("Location: ./index.php?content=massege&alert=register-succses");
         } else {
             header("Location: ./index.php?content=massege&alert=register-error");
