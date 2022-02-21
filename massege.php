@@ -3,7 +3,7 @@
 
     switch($alert) {
         case "no-email":
-            echo '<div class="alert alert-warning mt-5" role="alert">
+            echo '<div class="alert alert-warning mt-5 w-50 mx-auto" role="alert">
             U heeft geen email ingevoert, probeer opnieuw...
           </div>';
           header("Refresh: 3; ./index.php?content=register");
