@@ -20,17 +20,24 @@
           if($record["activated"]){
             header("Location: ./index.php?content=massege&alert=already-active");
           } else {
-              $password_hash = password_hash($password, PASSWORD_BCRYPT);
-              $sql = "UPDATE `register` 
-                      SET `password` = '$password_hash' 
-                      WHERE `id` = $id 
-                      AND `password` = '$pwh'";
-              if (mysqli_query($conn, $sql)) {
-                  //yep
-                  header("Location: ./index.php?content=massege&alert=suc-up");
-              } else {
-                  header("Location: ./index.php?content=massege&alert=err-up&id=$id&pwh=$pwh");
-              }
+
+            if (!strcmp($record["password"], $pwh)) {
+                $password_hash = password_hash($password, PASSWORD_BCRYPT);
+                $sql = "UPDATE `register` 
+                        SET `password` = '$password_hash', 
+                            `activated` = 1
+                        WHERE `id` = $id 
+                        AND `password` = '$pwh'";
+                if (mysqli_query($conn, $sql)) {
+                    header("Location: ./index.php?content=massege&alert=suc-up");
+                } else {
+                    header("Location: ./index.php?content=massege&alert=err-up&id=$id&pwh=$pwh");
+                }
+
+            } else {
+                header("Location: ./index.php?content=massege&alert=no-match-pwh");
+            }
+
           }
 
         } else {
