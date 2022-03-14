@@ -46,11 +46,23 @@ switch ($alert) {
                   </div>';
         header("Refresh: 3; ./index.php?content=activate&id=$id&pwh=$pwh");
         break;
-    case "idpqhmatch":
+    case "noidpqhmatch":
         echo '<div class="alert alert-warning mt-5 w-50 mx-auto" role="alert">
                         U staat niet in onze database, u wordt doorgestuurt naar de registatiepagina...
                       </div>';
         header("Refresh: 3; ./index.php?content=register");
+        break;
+    case "suc-up":
+        echo '<div class="alert alert-success mt-5 w-50 mx-auto" role="alert">
+                            Uw account is geactiveert! U wordt nu doorgestuurt naar de inlogpagina...
+                          </div>';
+        header("Refresh: 3; ./index.php?content=login");
+        break;
+    case "err-up":
+        echo '<div class="alert alert-danger mt-5 w-50 mx-auto" role="alert">
+                            Het registratieproses is niet gelukt, kies een nieuw wachtwoord...
+                          </div>';
+        header("Refresh: 3; ./index.php?content=activate&id=$id&pwh=$pwh");
         break;
     default:
         header("Location: ./index.php?content=home");
