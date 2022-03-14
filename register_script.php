@@ -15,8 +15,15 @@ if (empty($_POST["email"])) {
     if (mysqli_num_rows($result)) {
         header("Location: ./index.php?content=massege&alert=emailexist");
     } else {
-        $password = "geheim";
+        $mut = microtime();
+
+        $time = explode(" ", $mut);
+        $password = $time[1] * $time[0] * 1000000;
         $password_hash = password_hash($password, PASSWORD_BCRYPT);
+
+        $onehour = mktime(1,0,0,1,1,1970);
+        $d = date("d-m-y", ($time[1] + $onehour));
+        $t = date("H:i:s", ($time[1] + $onehour));
 
         $sql = "INSERT INTO `register` (`id`, `email`, `password`, `userrole`) VALUES (NULL,'$email','$password_hash','customer')";
         if (mysqli_query($conn,$sql)) {
@@ -44,7 +51,8 @@ if (empty($_POST["email"])) {
                                 <h2>Beste Gebruiker</h2>
                                 <p>U heeft zich geregistreert bij www.Groentensappen.nl.</p>
                                 <p>Klik <a href="http://www.inlogregistratie.nl/index.php?content=activate&id=' . $id . '&pwh=' . $password_hash . '">hier</a> voor het activere en wijsigen van wachtwoord van uw account.</p>
-                                <p>Bedankt voor het registreren!</p><br>
+                                <p>Uw datum en tijd van registreren:'. $d . ' - '. $t .'</p><br>
+                                <p>Bedankt voor het registreren!</p>
                                 <p>Met vriendelijke groet,</p>
                                 <p>N. van Duin</p>
                                 <p><strong>CEO Groentensap INC.</strong></p>
@@ -78,3 +86,4 @@ if (empty($_POST["email"])) {
     
     }
 }
+?>
