@@ -66,7 +66,7 @@ switch ($alert) {
         break;
     case "already-active":
            echo '<div class="alert alert-warning mt-5 w-50 mx-auto" role="alert">
-                            Het account is al geregistreerd....
+                            Het account is al geactiveert....
                              </div>';
            header("Refresh: 3; ./index.php?content=login");
         break;
