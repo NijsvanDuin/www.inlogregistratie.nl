@@ -4,7 +4,6 @@ include("./functions.php");
 
 $email = sanitize($_POST["email"]);
 $password = sanitize($_POST["password"]);
-var_dump($_POST);
 
 if(empty($email) || empty($password)) {
     header("Location: ./index.php?content=massege&alert=no-email-or-password");
@@ -19,8 +18,26 @@ if(empty($email) || empty($password)) {
                 // var_dump($record["activated"]);
                 if(!$record["activated"]) {
                     header("Location: ./index.php?content=massege&alert=non-act&email=$email");
+                } elseif(!password_verify($password,$record["password"])) {
+                    header("Location: ./index.php?content=massege&alert=pw-and-pwh-no&email=$email");
                 } else {
-                    echo "Klaar voor inlog";
+                    switch($record["userrole"]) {
+                        case 'customer':
+                            header("Location: ./index.php?content=c-home");
+                        break;
+                        case 'root':
+                            header("Location: ./index.php?content=r-home");
+                        break;
+                        case 'admin':
+                            header("Location: ./index.php?content=a-home");
+                        break;
+                        case 'moderator':
+                            header("Location: ./index.php?content=m-home");
+                        break;
+                        default:
+                            header("Location: ./index.php?content=home");
+                        break;
+                    }   
                 }
             }
 }
