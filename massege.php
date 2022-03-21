@@ -2,6 +2,7 @@
 $alert = (isset($_GET["alert"])) ? $_GET["alert"] : "default";
 $id = (isset($_GET["id"])) ? $_GET["id"] : "";
 $pwh = (isset($_GET["password"])) ? $_GET["pwh"] : "";
+$email = (isset($_GET["email"])) ? $_GET["email"] : "";
 
 switch ($alert) {
     case "no-email":
@@ -76,6 +77,25 @@ switch ($alert) {
                               </div>';
         header("Refresh: 3; ./index.php?content=register");
         break;
+    case "no-email-or-password":
+        echo '<div class="alert alert-warning mt-5 w-50 mx-auto" role="alert">
+                                 Een van de velden zijn leeg, Probeer opnieuw....
+                                  </div>';
+        header("Refresh: 3; ./index.php?content=login");
+        break;
+    case "email-un":
+        echo '<div class="alert alert-warning mt-5 w-50 mx-auto" role="alert">
+                                     Uw ingevoerde email is bij ons niet bekend, Probeer opnieuw....
+                                      </div>';
+        header("Refresh: 3; ./index.php?content=login");
+        break;
+    case "non-act":
+        echo '<div class="alert alert-danger mt-5 w-50 mx-auto" role="alert">
+                                         Uw account is nog niet geregistreerd , Check uw mail <span class="email-mes"> '. $email . ' </span>  voor de activatie link....
+                                          </div>';
+        header("Refresh: 3; ./index.php?content=login");
+        break;
+
     default:
         header("Location: ./index.php?content=home");
         break;
