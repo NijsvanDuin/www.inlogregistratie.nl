@@ -4,7 +4,7 @@
             <form action="./index.php?content=register_script" method="post">
                 <div class="form-group">
                     <label for="InputEmail">Vul hier uw email in:</label>
-                    <input name="email" type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp" placeholder="E-mail">
+                    <input name="email" type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp" placeholder="E-mail" autofocus>
                     <br>
                 </div>
                 <button type="submit" class="btn btn-secondary btn-lg">Registeer</button>
