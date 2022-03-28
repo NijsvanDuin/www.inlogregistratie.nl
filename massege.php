@@ -91,17 +91,22 @@ switch ($alert) {
         break;
     case "non-act":
         echo '<div class="alert alert-danger mt-5 w-50 mx-auto" role="alert">
-                                         Uw account is nog niet geregistreerd , Check uw mail <span class="email-mes"> '. $email . ' </span>  voor de activatie link....
+                                         Uw account is nog niet geregistreerd , Check uw mail <span class="email-mes"> ' . $email . ' </span>  voor de activatie link....
                                           </div>';
         header("Refresh: 3; ./index.php?content=login");
         break;
-        case "pw-and-pwh-no":
-            echo '<div class="alert alert-danger mt-5 w-50 mx-auto" role="alert">
-                                        Uw ingevulde wachtwoord voor het email <span class="email-mes"> '. $email . ' </span> is niet correct, Probeer opnieuw....
+    case "pw-and-pwh-no":
+        echo '<div class="alert alert-danger mt-5 w-50 mx-auto" role="alert">
+                                        Uw ingevulde wachtwoord voor het email <span class="email-mes"> ' . $email . ' </span> is niet correct, Probeer opnieuw....
                                           </div>';
-            header("Refresh: 3; ./index.php?content=login");
-            break;
-
+        header("Refresh: 3; ./index.php?content=login");
+        break;
+    case "logout":
+        echo '<div class="alert alert-success mt-5 w-50 mx-auto" role="alert">
+                                            U bent success vol uitgelogt...
+                                              </div>';
+        header("Refresh: 3; ./index.php?content=login");
+        break;
     default:
         header("Location: ./index.php?content=home");
         break;

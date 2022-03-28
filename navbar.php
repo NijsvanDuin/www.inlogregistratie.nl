@@ -36,12 +36,20 @@
         </li>
       </ul>
       <ul class="navbar-nav ms-auto">
-      <li class="nav-item">
-          <a class="nav-link <?php if ($active == "register" || $active == "") { echo "active"; } ?>" aria-current="page" href="./index.php?content=register">Registeer</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link <?php if ($active == "login") { echo "active"; } ?>" href="./index.php?content=login">Inloggen</a>
-        </li>
+        <?php 
+          if (isset($_SESSION["id"])){
+            echo '<li class="nav-item">
+                    <a class="nav-link '; if ($active == "logout") { echo "active"; } echo '" href="./index.php?content=logout">Uitloggen</a>
+                  </li>';
+          }else {
+            echo '<li class="nav-item">
+                    <a class="nav-link '; if ($active == "register" || $active == "") { echo "active"; } echo '" aria-current="page" href="./index.php?content=register">Registeer</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link  '; if ($active == "login") { echo "active"; } echo '" href="./index.php?content=login">Inloggen</a>
+                  </li>';
+          }
+        ?>
       </ul>
     </div>
   </div>
